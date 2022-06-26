@@ -1,4 +1,6 @@
 # ITC4214 Coursework
+Stamatia Markella Printzou (214675)
+
 ITC4214 Midterm (Group) Coursework
 
 For this coursework, a web site where users can add book data of their choice, to a grid of text data, is created. This web site has two pages: 
