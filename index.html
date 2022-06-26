@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<!-- 
+Stamatia Markella Printzou (214675)
+June 27, 2022 
+-->
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home</title>
+</head>
+
+<body>
+
+  <div class="header" id="myHeader">
+    <div class="header-left">
+      <a href="index.html" class="logo"><i>SMP</i></a>
+    </div>
+    <div class="header-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div id="myDIV" class="header" style="background-color:white;">
+    <h2 style="margin:5px;">My Favorite Books</h2>
+    <br><br>
+    <input type="text" id="myInput" placeholder="Please write a book title">
+    <span onclick="newElement()" class="addBtn">Add</span>
+  </div>
+      
+  <ul id="myUL">
+    <li>The Secret History</li>
+    <li>The Picture of Dorian Gray</li>
+    <li>Little Women</li>
+    <li>Hamlet</li>
+    <li>The Bell Jar</li>
+  </ul>
+      
+  <script>
+
+    // When the user scrolls the page, execute myFunction 
+    window.onscroll = function() {myFunction()};
+
+    // Get the header
+    var header = document.getElementById("myHeader");
+
+    // Get the offset position of the navbar
+    var sticky = header.offsetTop;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+
+    // Create a "delete" button and append it to each book title
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      myNodelist[i].appendChild(span);
+    }
+      
+    // Click on the "delete" button to hide the current book title
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
+    }
+      
+    // Add a new book title when clicking on the "Add" button
+    function newElement() {
+      var li = document.createElement("li");
+      var inputValue = document.getElementById("myInput").value;
+      var t = document.createTextNode(inputValue);
+      li.appendChild(t);
+      if (inputValue === '') {
+        alert("You must write something!");
+      } 
+      else {
+        document.getElementById("myUL").appendChild(li);
+      }
+      document.getElementById("myInput").value = "";
+      
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      li.appendChild(span);
+      
+      for (i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+          var div = this.parentElement;
+          div.style.display = "none";
+        }
+      }
+    }
+  </script>
+
+  <br><br><br><br><br><br>
+
+  <footer>  
+    <div class="header">
+      <div>
+        <a href="index.html" class="logo"><i>SMP</i></a>
+      </div>
+      <div>
+        <h3>@Copyright 2020. All Right Reserved. Developed by Stamatia Markella Printzou</h3>
+      </div>
+      <div>
+        <div style="margin: 25px 0;">
+          <a href="https://www.linkedin.com"><i class="fa fa-linkedin" style="color:black;"></i></a>  
+          <a href="https://twitter.com"><i class="fa fa-twitter" style="color:black;"></i></a> 
+          <a href="https://www.facebook.com"><i class="fa fa-facebook" style="color:black;"></i></a> 
+        </div>
+      </div>
+    </div>  
+  </footer>
+      
+</body>
+
+</html>
